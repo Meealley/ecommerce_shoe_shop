@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../theme/app_textstyle.dart';
+import 'widgets/body.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -8,12 +9,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(
-          "Home page",
-          style: appstyle(18, Colors.pink, FontWeight.normal),
-        ),
-      ),
+      body: Body(),
     );
   }
 }
