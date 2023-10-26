@@ -19,8 +19,8 @@ class NewShoes extends StatelessWidget {
       child: CachedNetworkImage(
         imageUrl: imageUrl,
         placeholder: (context, url) =>
-            CircularProgressIndicator(), // Shown while the image is loading
-        errorWidget: (context, url, error) => Icon(Icons.error),
+            const CircularProgressIndicator(), // Shown while the image is loading
+        errorWidget: (context, url, error) => const Icon(Icons.error),
       ),
     );
   }

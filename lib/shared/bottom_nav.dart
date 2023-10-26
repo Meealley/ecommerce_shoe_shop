@@ -1,6 +1,5 @@
 import 'package:ecommerce_shop/theme/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 
 class BottomNav extends StatelessWidget {
   final IconData icon;

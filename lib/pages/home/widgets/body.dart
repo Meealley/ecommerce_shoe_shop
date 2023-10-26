@@ -1,13 +1,11 @@
 // import 'package:cached_network/cached_network.dart';
 import 'package:ecommerce_shop/model/sneakers_model.dart';
 import 'package:ecommerce_shop/services/helper.dart';
-import 'package:ecommerce_shop/shared/product_card.dart';
 import 'package:ecommerce_shop/theme/app_colors.dart';
 import 'package:ecommerce_shop/theme/app_textstyle.dart';
 import 'package:flutter/material.dart';
 
 import 'home_widgets.dart';
-import 'newshoes.dart';
 
 class Body extends StatefulWidget {
   const Body({
@@ -53,16 +51,16 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
       child: Stack(
         children: [
           Container(
-            padding: EdgeInsets.fromLTRB(13, 40, 0, 0),
+            padding: const EdgeInsets.fromLTRB(13, 40, 0, 0),
             height: MediaQuery.of(context).size.height * 0.4,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/top_image.png'),
                 fit: BoxFit.fill,
               ),
             ),
             child: Container(
-              padding: EdgeInsets.only(left: 10, bottom: 15),
+              padding: const EdgeInsets.only(left: 10, bottom: 15),
               width: MediaQuery.of(context).size.width,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,7 +70,7 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
                     style:
                         appstyleWithHt(38, AppConst.kLight, FontWeight.bold, 2),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   TabBar(
@@ -83,7 +81,7 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
                     labelColor: AppConst.kLight,
                     labelStyle: appstyle(24, AppConst.kLight, FontWeight.bold),
                     unselectedLabelColor: Colors.grey.withOpacity(0.3),
-                    tabs: [
+                    tabs: const [
                       Tab(
                         text: "Men Shoes",
                       ),
@@ -103,7 +101,7 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
             padding: EdgeInsets.only(
                 top: MediaQuery.of(context).size.height * 0.256),
             child: Container(
-              padding: EdgeInsets.only(left: 12),
+              padding: const EdgeInsets.only(left: 12),
               child: TabBarView(
                 controller: _tabController,
                 children: [

@@ -19,7 +19,7 @@ class LatestShoes extends StatelessWidget {
       future: _male,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator(
+          return const CircularProgressIndicator(
             color: Colors.black,
           );
         } else if (snapshot.hasError) {

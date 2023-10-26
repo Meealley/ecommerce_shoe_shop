@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../theme/app_textstyle.dart';
 import 'widgets/body.dart';
 
 class HomePage extends StatelessWidget {
@@ -10,7 +9,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade300,
-      body: Body(),
+      body: const Body(),
     );
   }
 }

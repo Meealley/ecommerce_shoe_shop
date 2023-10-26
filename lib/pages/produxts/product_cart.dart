@@ -1,16 +1,12 @@
-import 'package:ecommerce_shop/shared/stagger_tile.dart';
+import 'package:ecommerce_shop/shared/category_btn.dart';
 import 'package:ecommerce_shop/theme/app_colors.dart';
 import 'package:ecommerce_shop/theme/app_textstyle.dart';
 import 'package:ecommerce_shop/theme/custom_spacer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
-import 'package:ionicons/ionicons.dart';
-import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
-import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
 
 import '../../model/sneakers_model.dart';
 import '../../services/helper.dart';
-import '../../shared/product_card.dart';
 import 'latest_shoes.dart';
 
 class ProductCart extends StatefulWidget {
@@ -50,6 +46,13 @@ class _ProductCartState extends State<ProductCart>
     getKids();
   }
 
+  List<String> brand = [
+    'assets/images/adidas.png',
+    'assets/images/gucci.png',
+    'assets/images/jordan.png',
+    'assets/images/nike.png',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,9 +62,9 @@ class _ProductCartState extends State<ProductCart>
           child: Stack(
             children: [
               Container(
-                padding: EdgeInsets.fromLTRB(13, 40, 0, 0),
+                padding: const EdgeInsets.fromLTRB(13, 40, 0, 0),
                 height: MediaQuery.of(context).size.height * 0.4,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/images/top_image.png'),
                     fit: BoxFit.fill,
@@ -71,7 +74,7 @@ class _ProductCartState extends State<ProductCart>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.fromLTRB(6, 12, 16, 18),
+                      padding: const EdgeInsets.fromLTRB(6, 12, 16, 18),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -79,7 +82,7 @@ class _ProductCartState extends State<ProductCart>
                             onTap: () {
                               Navigator.pop(context);
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.close,
                               color: Colors.white,
                               size: 28,
@@ -89,7 +92,7 @@ class _ProductCartState extends State<ProductCart>
                             onTap: () {
                               filter();
                             },
-                            child: Icon(
+                            child: const Icon(
                               FontAwesome.sliders,
                               color: Colors.white,
                               size: 28,
@@ -107,7 +110,7 @@ class _ProductCartState extends State<ProductCart>
                       labelStyle:
                           appstyle(24, AppConst.kLight, FontWeight.bold),
                       unselectedLabelColor: Colors.grey.withOpacity(0.3),
-                      tabs: [
+                      tabs: const [
                         Tab(
                           text: "Men Shoes",
                         ),
@@ -158,46 +161,158 @@ class _ProductCartState extends State<ProductCart>
   }
 
   Future<dynamic> filter() {
+    double value = 1;
     return showModalBottomSheet(
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       barrierColor: Colors.white54,
       context: context,
       builder: (context) => Container(
-        height: MediaQuery.of(context).size.height * 0.55,
+        height: MediaQuery.of(context).size.height * 0.74,
         decoration: BoxDecoration(
-          color: Colors.grey,
-          borderRadius: BorderRadius.only(
+          color: Colors.grey.shade500,
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(18),
             topRight: Radius.circular(18),
           ),
         ),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
               height: 8,
               width: 50,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(
                     Radius.circular(10),
                   ),
                   color: Colors.black),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.5,
+              height: MediaQuery.of(context).size.height * 0.7,
               child: Column(
                 children: [
-                  CustomSpacer(),
+                  const CustomSpacer(),
                   Text(
                     "Filter Products",
                     style: appstyle(23, Colors.black, FontWeight.normal),
+                  ),
+                  const CustomSpacer(),
+                  Text(
+                    "Gender",
+                    style: appstyle(19, Colors.black, FontWeight.normal),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      CategoryBtn(
+                        label: "Men",
+                        buttonColor: Colors.black,
+                        onPress: () {
+                          print("clicked men's shoe");
+                        },
+                      ),
+                      CategoryBtn(
+                        label: "Women",
+                        buttonColor: Colors.grey.shade800,
+                        onPress: () {
+                          print("clicked men's shoe");
+                        },
+                      ),
+                      CategoryBtn(
+                        label: "Kid's",
+                        buttonColor: Colors.grey.shade800,
+                        onPress: () {
+                          print("clicked men's shoe");
+                        },
+                      ),
+                    ],
+                  ),
+                  const CustomSpacer(),
+                  Text(
+                    "Category",
+                    style: appstyle(19, Colors.black, FontWeight.normal),
+                  ),
+                  Row(
+                    children: [
+                      CategoryBtn(
+                        label: "Shoes",
+                        buttonColor: Colors.black,
+                        onPress: () {
+                          print("clicked men's shoe");
+                        },
+                      ),
+                      CategoryBtn(
+                        label: "Apparel",
+                        buttonColor: Colors.grey.shade800,
+                        onPress: () {
+                          print("clicked men's shoe");
+                        },
+                      ),
+                      CategoryBtn(
+                        label: "Accessories",
+                        buttonColor: Colors.grey.shade800,
+                        onPress: () {
+                          print("clicked men's shoe");
+                        },
+                      ),
+                    ],
+                  ),
+                  const CustomSpacer(),
+                  Text(
+                    "Price",
+                    style: appstyle(19, Colors.black, FontWeight.normal),
+                  ),
+                  Slider.adaptive(
+                    activeColor: Colors.black,
+                    inactiveColor: Colors.grey,
+                    thumbColor: Colors.black,
+                    value: value,
+                    label: value.toString(),
+                    secondaryTrackValue: 200,
+                    max: 500,
+                    divisions: 50,
+                    onChanged: (double value) {},
+                  ),
+                  const CustomSpacer(),
+                  Text(
+                    'Brand',
+                    style: appstyle(19, Colors.black, FontWeight.normal),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    height: 80,
+                    child: ListView.builder(
+                      itemCount: 4,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.grey.shade200,
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(12))),
+                            child: Image.asset(
+                              brand[index],
+                              height: 60,
+                              // fit: BoxFit.contain,
+                              width: 80,
+                              color: Colors.black,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   )
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

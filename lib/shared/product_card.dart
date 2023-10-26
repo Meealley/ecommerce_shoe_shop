@@ -26,13 +26,13 @@ class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(8, 0, 20, 0),
+      padding: const EdgeInsets.fromLTRB(8, 0, 20, 0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(14),
         child: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width * 0.6,
-          decoration: BoxDecoration(boxShadow: [
+          decoration: const BoxDecoration(boxShadow: [
             BoxShadow(
               color: Colors.white,
               spreadRadius: 1,
@@ -58,7 +58,7 @@ class _ProductCardState extends State<ProductCard> {
                       top: 10,
                       child: GestureDetector(
                         onTap: null,
-                        child: Icon(
+                        child: const Icon(
                           MaterialCommunityIcons.heart_circle_outline,
                           size: 28,
                         ),
@@ -66,7 +66,7 @@ class _ProductCardState extends State<ProductCard> {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(left: 8),
+                padding: const EdgeInsets.only(left: 8),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -78,7 +78,7 @@ class _ProductCardState extends State<ProductCard> {
                         FontWeight.bold,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Text(
@@ -92,11 +92,11 @@ class _ProductCardState extends State<ProductCard> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Padding(
-                padding: EdgeInsets.only(right: 8, left: 8),
+                padding: const EdgeInsets.only(right: 8, left: 8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -108,11 +108,11 @@ class _ProductCardState extends State<ProductCard> {
                       "Colors",
                       style: appstyle(19, Colors.grey, FontWeight.w500),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 5,
                     ),
                     ChoiceChip(
-                      label: Text(" "),
+                      label: const Text(" "),
                       selected: selected,
                       visualDensity: VisualDensity.compact,
                       selectedColor: Colors.black,

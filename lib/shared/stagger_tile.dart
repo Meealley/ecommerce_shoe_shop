@@ -29,7 +29,7 @@ class _StaggerTileState extends State<StaggerTile> {
         borderRadius: BorderRadius.circular(8),
       ),
       child: Padding(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +40,7 @@ class _StaggerTileState extends State<StaggerTile> {
               // width: 40,
             ),
             Container(
-              padding: EdgeInsets.only(top: 12),
+              padding: const EdgeInsets.only(top: 12),
               height: 70,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,

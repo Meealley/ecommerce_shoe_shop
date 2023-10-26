@@ -23,7 +23,7 @@ class HomeWidget extends StatelessWidget {
             future: _male,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator(
+                return const CircularProgressIndicator(
                   color: Colors.black,
                 );
               } else if (snapshot.hasError) {
@@ -39,7 +39,7 @@ class HomeWidget extends StatelessWidget {
                       id: shoe.id,
                       name: shoe.name,
                       category: shoe.category,
-                      price: '\₦${shoe.oldPrice}',
+                      price: '₦${shoe.oldPrice}',
                       image: shoe.imageUrl[0],
                     );
                   },
@@ -65,7 +65,7 @@ class HomeWidget extends StatelessWidget {
                         "Show all",
                         style: appstyle(18, Colors.black, FontWeight.normal),
                       ),
-                      Icon(Icons.arrow_right_sharp),
+                      const Icon(Icons.arrow_right_sharp),
                     ],
                   ),
                 ],
@@ -79,7 +79,7 @@ class HomeWidget extends StatelessWidget {
             future: _male,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator(
+                return const CircularProgressIndicator(
                   color: Colors.black,
                 );
               } else if (snapshot.hasError) {
