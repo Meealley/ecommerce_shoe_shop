@@ -1,6 +1,7 @@
 import 'package:ecommerce_shop/shared/stagger_tile.dart';
 import 'package:ecommerce_shop/theme/app_colors.dart';
 import 'package:ecommerce_shop/theme/app_textstyle.dart';
+import 'package:ecommerce_shop/theme/custom_spacer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:ionicons/ionicons.dart';
@@ -85,7 +86,9 @@ class _ProductCartState extends State<ProductCart>
                             ),
                           ),
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              filter();
+                            },
                             child: Icon(
                               FontAwesome.sliders,
                               color: Colors.white,
@@ -121,9 +124,9 @@ class _ProductCartState extends State<ProductCart>
               ),
               Padding(
                 padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.2,
-                  left: 16,
-                ),
+                    top: MediaQuery.of(context).size.height * 0.2,
+                    left: 10,
+                    right: 10),
                 child: TabBarView(
                   controller: _tabController,
                   children: [
@@ -151,6 +154,53 @@ class _ProductCartState extends State<ProductCart>
               )
             ],
           )),
+    );
+  }
+
+  Future<dynamic> filter() {
+    return showModalBottomSheet(
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      barrierColor: Colors.white54,
+      context: context,
+      builder: (context) => Container(
+        height: MediaQuery.of(context).size.height * 0.55,
+        decoration: BoxDecoration(
+          color: Colors.grey,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(18),
+            topRight: Radius.circular(18),
+          ),
+        ),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              height: 8,
+              width: 50,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                  color: Colors.black),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.5,
+              child: Column(
+                children: [
+                  CustomSpacer(),
+                  Text(
+                    "Filter Products",
+                    style: appstyle(23, Colors.black, FontWeight.normal),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
