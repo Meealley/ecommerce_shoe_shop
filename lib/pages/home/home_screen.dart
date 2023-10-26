@@ -1,6 +1,7 @@
 import 'package:ecommerce_shop/pages/cart/cart_page.dart';
 import 'package:ecommerce_shop/pages/favorite/favorite_page.dart';
 import 'package:ecommerce_shop/pages/home/home_page.dart';
+import 'package:ecommerce_shop/pages/produxts/product_cart.dart';
 import 'package:ecommerce_shop/pages/profile/profile_page.dart';
 import 'package:ecommerce_shop/pages/search/search_page.dart';
 import 'package:ecommerce_shop/providers/home_screen_provider.dart';
@@ -16,7 +17,7 @@ import '../../shared/bottom_navbar.dart';
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
   List<Widget> pageList = [
-    HomePage(),
+    ProductCart(),
     SearchPage(),
     FavoritePage(),
     CartPage(),
