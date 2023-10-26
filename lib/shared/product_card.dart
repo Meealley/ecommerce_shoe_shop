@@ -4,6 +4,7 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 class ProductCard extends StatefulWidget {
   final String name;
+  final String id;
   final String category;
   final String price;
   final String image;
@@ -13,13 +14,15 @@ class ProductCard extends StatefulWidget {
       required this.name,
       required this.category,
       required this.price,
-      required this.image});
+      required this.image,
+      required this.id});
 
   @override
   State<ProductCard> createState() => _ProductCardState();
 }
 
 class _ProductCardState extends State<ProductCard> {
+  bool selected = true;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,7 +34,7 @@ class _ProductCardState extends State<ProductCard> {
           width: MediaQuery.of(context).size.width * 0.6,
           decoration: BoxDecoration(boxShadow: [
             BoxShadow(
-              color: Colors.red,
+              color: Colors.white,
               spreadRadius: 1,
               blurRadius: 0.6,
               offset: Offset(1, 1),
@@ -55,8 +58,10 @@ class _ProductCardState extends State<ProductCard> {
                       top: 10,
                       child: GestureDetector(
                         onTap: null,
-                        child:
-                            Icon(MaterialCommunityIcons.heart_circle_outline),
+                        child: Icon(
+                          MaterialCommunityIcons.heart_circle_outline,
+                          size: 28,
+                        ),
                       )),
                 ],
               ),
@@ -68,19 +73,50 @@ class _ProductCardState extends State<ProductCard> {
                     Text(
                       widget.name,
                       style: appstyle(
-                        17,
+                        25,
                         Colors.black,
                         FontWeight.bold,
                       ),
+                    ),
+                    SizedBox(
+                      height: 15,
                     ),
                     Text(
                       widget.category,
                       style: appstyle(
                         17,
-                        Colors.black,
+                        Colors.grey,
                         FontWeight.bold,
                       ),
                     ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: EdgeInsets.only(right: 8, left: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      widget.price,
+                      style: appstyle(23, Colors.green, FontWeight.bold),
+                    ),
+                    Text(
+                      "Colors",
+                      style: appstyle(19, Colors.grey, FontWeight.w500),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    ChoiceChip(
+                      label: Text(" "),
+                      selected: selected,
+                      visualDensity: VisualDensity.compact,
+                      selectedColor: Colors.black,
+                    )
                   ],
                 ),
               ),

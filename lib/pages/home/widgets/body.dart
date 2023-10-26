@@ -1,5 +1,6 @@
 // import 'package:cached_network/cached_network.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerce_shop/shared/product_card.dart';
 import 'package:ecommerce_shop/theme/app_colors.dart';
 import 'package:ecommerce_shop/theme/app_textstyle.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +39,7 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Dr Luxury Shoes",
+                    "Luxury Shoes 🥾",
                     style:
                         appstyleWithHt(38, AppConst.kLight, FontWeight.bold, 2),
                   ),
@@ -83,14 +84,13 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
                         itemCount: 6,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              color: Colors.purple.shade300,
-                              height: MediaQuery.of(context).size.height,
-                              width: MediaQuery.of(context).size.width * 0.6,
-                            ),
-                          );
+                          return ProductCard(
+                              id: "1",
+                              name: "Addidas CM",
+                              category: "Men\'s Shoe",
+                              price: "₦30,000",
+                              image:
+                                  "https://res.cloudinary.com/dvflv8rwy/image/upload/v1698313336/vws3wtgwnnarbhufinar.png");
                         },
                       ),
                     ),
@@ -132,13 +132,13 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
                             child: Container(
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
-                                  color: Colors.green),
+                                  color: Colors.grey.shade600),
                               height: MediaQuery.of(context).size.height * 0.12,
                               width: MediaQuery.of(context).size.width * 0.30,
                               // child: Image.asset('assets/images/jordan.png'),
                               child: CachedNetworkImage(
                                 imageUrl:
-                                    'https://res.cloudinary.com/dvflv8rwy/image/upload/v1698309388/hrxseefagfdcx4zjnxef.webp',
+                                    'https://res.cloudinary.com/dvflv8rwy/image/upload/v1698313336/vws3wtgwnnarbhufinar.png',
                                 placeholder: (context, url) =>
                                     CircularProgressIndicator(), // Shown while the image is loading
                                 errorWidget: (context, url, error) =>

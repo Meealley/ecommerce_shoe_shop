@@ -30,6 +30,7 @@ class HomeScreen extends StatelessWidget {
     return Consumer<MainScreenNotifier>(
       builder: (context, mainScreenNotifier, child) {
         return Scaffold(
+          backgroundColor: Colors.grey.shade300,
           body: pageList[mainScreenNotifier.pageIndex],
           bottomNavigationBar: BottonNavBar(),
         );
