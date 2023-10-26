@@ -1,3 +1,5 @@
+// import 'package:cached_network/cached_network.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_shop/theme/app_colors.dart';
 import 'package:ecommerce_shop/theme/app_textstyle.dart';
 import 'package:flutter/material.dart';
@@ -128,9 +130,20 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Container(
-                              color: Colors.purple.shade300,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  color: Colors.green),
                               height: MediaQuery.of(context).size.height * 0.12,
                               width: MediaQuery.of(context).size.width * 0.30,
+                              // child: Image.asset('assets/images/jordan.png'),
+                              child: CachedNetworkImage(
+                                imageUrl:
+                                    'https://res.cloudinary.com/dvflv8rwy/image/upload/v1698309388/hrxseefagfdcx4zjnxef.webp',
+                                placeholder: (context, url) =>
+                                    CircularProgressIndicator(), // Shown while the image is loading
+                                errorWidget: (context, url, error) =>
+                                    Icon(Icons.error),
+                              ),
                             ),
                           );
                         },
