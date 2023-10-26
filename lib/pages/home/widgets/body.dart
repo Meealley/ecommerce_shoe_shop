@@ -1,5 +1,7 @@
 // import 'package:cached_network/cached_network.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerce_shop/model/sneakers_model.dart';
+import 'package:ecommerce_shop/services/helper.dart';
 import 'package:ecommerce_shop/shared/product_card.dart';
 import 'package:ecommerce_shop/theme/app_colors.dart';
 import 'package:ecommerce_shop/theme/app_textstyle.dart';
@@ -17,6 +19,30 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> with TickerProviderStateMixin {
   late final TabController _tabController =
       TabController(length: 3, vsync: this);
+  late Future<List<Sneakers>> _male;
+  late Future<List<Sneakers>> _female;
+  late Future<List<Sneakers>> _kids;
+
+  void getMale() {
+    _male = Helper().getMaleSneakers();
+  }
+
+  void getFemale() {
+    _female = Helper().getFemaleSneakers();
+  }
+
+  void getKids() {
+    _kids = Helper().getKidsSneakers();
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getMale();
+    getFemale();
+    getKids();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,17 +106,31 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
                   children: [
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.405,
-                      child: ListView.builder(
-                        itemCount: 6,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return ProductCard(
-                              id: "1",
-                              name: "Addidas CM",
-                              category: "Men\'s Shoe",
-                              price: "₦30,000",
-                              image:
-                                  "https://res.cloudinary.com/dvflv8rwy/image/upload/v1698313336/vws3wtgwnnarbhufinar.png");
+                      child: FutureBuilder<List<Sneakers>>(
+                        future: _male,
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return CircularProgressIndicator();
+                          } else if (snapshot.hasError) {
+                            return Text("Error: ${snapshot.error}");
+                          } else {
+                            final male = snapshot.data;
+                            return ListView.builder(
+                              itemCount: male!.length,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (context, index) {
+                                final shoe = snapshot.data![index];
+                                return ProductCard(
+                                  id: shoe.id,
+                                  name: shoe.name,
+                                  category: shoe.category,
+                                  price: shoe.oldPrice,
+                                  image: shoe.imageUrl[0],
+                                );
+                              },
+                            );
+                          }
                         },
                       ),
                     ),
