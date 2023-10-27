@@ -1,4 +1,6 @@
 import 'package:ecommerce_shop/model/sneakers_model.dart';
+import 'package:ecommerce_shop/pages/produxts/product_cart.dart';
+import 'package:ecommerce_shop/pages/produxts/product_page.dart';
 import 'package:ecommerce_shop/theme/app_textstyle.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_shop/shared/product_card.dart';
@@ -7,10 +9,12 @@ import 'newshoes.dart';
 
 class HomeWidget extends StatelessWidget {
   final Future<List<Sneakers>> _male;
+  final int tabIndex;
 
   const HomeWidget({
     super.key,
     required Future<List<Sneakers>> male,
+    required this.tabIndex,
   }) : _male = male;
 
   @override
@@ -35,12 +39,23 @@ class HomeWidget extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     final shoe = snapshot.data![index];
-                    return ProductCard(
-                      id: shoe.id,
-                      name: shoe.name,
-                      category: shoe.category,
-                      price: '₦${shoe.oldPrice}',
-                      image: shoe.imageUrl[0],
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProductPage(
+                                id: shoe.id, category: shoe.category),
+                          ),
+                        );
+                      },
+                      child: ProductCard(
+                        id: shoe.id,
+                        name: shoe.name,
+                        category: shoe.category,
+                        price: '₦${shoe.oldPrice}',
+                        image: shoe.imageUrl[0],
+                      ),
                     );
                   },
                 );
@@ -59,14 +74,26 @@ class HomeWidget extends StatelessWidget {
                     "Latest  Shoes",
                     style: appstyle(18, Colors.black, FontWeight.normal),
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        "Show all",
-                        style: appstyle(18, Colors.black, FontWeight.normal),
-                      ),
-                      const Icon(Icons.arrow_right_sharp),
-                    ],
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProductCart(
+                            tabIndex: tabIndex,
+                          ),
+                        ),
+                      );
+                    },
+                    child: Row(
+                      children: [
+                        Text(
+                          "Show all",
+                          style: appstyle(18, Colors.black, FontWeight.normal),
+                        ),
+                        const Icon(Icons.arrow_right_sharp),
+                      ],
+                    ),
                   ),
                 ],
               ),

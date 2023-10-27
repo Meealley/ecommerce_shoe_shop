@@ -105,9 +105,18 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
               child: TabBarView(
                 controller: _tabController,
                 children: [
-                  HomeWidget(male: _male),
-                  HomeWidget(male: _female),
-                  HomeWidget(male: _kids),
+                  HomeWidget(
+                    male: _male,
+                    tabIndex: _tabController.index,
+                  ),
+                  HomeWidget(
+                    male: _female,
+                    tabIndex: _tabController.index,
+                  ),
+                  HomeWidget(
+                    male: _kids,
+                    tabIndex: _tabController.index,
+                  ),
                 ],
               ),
             ),

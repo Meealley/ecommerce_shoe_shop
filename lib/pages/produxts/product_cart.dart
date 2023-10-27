@@ -10,7 +10,8 @@ import '../../services/helper.dart';
 import 'latest_shoes.dart';
 
 class ProductCart extends StatefulWidget {
-  const ProductCart({super.key});
+  final int tabIndex;
+  const ProductCart({super.key, required this.tabIndex});
 
   @override
   State<ProductCart> createState() => _ProductCartState();
@@ -296,8 +297,8 @@ class _ProductCartState extends State<ProductCart>
                           child: Container(
                             decoration: BoxDecoration(
                                 color: Colors.grey.shade200,
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(12))),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(12))),
                             child: Image.asset(
                               brand[index],
                               height: 60,
