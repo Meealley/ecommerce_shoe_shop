@@ -1,7 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_shop/providers/product_provider.dart';
 import 'package:ecommerce_shop/services/helper.dart';
+import 'package:ecommerce_shop/theme/app_textstyle.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 
@@ -66,12 +69,18 @@ class _ProductPageState extends State<ProductPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             GestureDetector(
-                              onTap: null,
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
                               child: const Icon(Icons.close),
                             ),
                             GestureDetector(
                               onTap: null,
-                              child: const Icon(Ionicons.ellipse),
+                              child: Icon(
+                                AntDesign.ellipsis1,
+                                size: 45,
+                                weight: 50,
+                              ),
                             )
                           ],
                         ),
@@ -112,10 +121,10 @@ class _ProductPageState extends State<ProductPage> {
                                       Positioned(
                                         top:
                                             MediaQuery.of(context).size.height *
-                                                0.09,
+                                                0.1,
                                         right: 20,
                                         child: const Icon(
-                                          Ionicons.heart,
+                                          AntDesign.heart,
                                           color: Colors.grey,
                                         ),
                                       ),
@@ -147,12 +156,145 @@ class _ProductPageState extends State<ProductPage> {
                                             ),
                                           ),
                                         ),
-                                      )
+                                      ),
                                     ],
                                   );
                                 },
                               ),
-                            )
+                            ),
+                            Positioned(
+                              bottom: 30,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(30),
+                                  topRight: Radius.circular(30),
+                                ),
+                                child: Container(
+                                  height: MediaQuery.of(context).size.height *
+                                      0.645,
+                                  width: MediaQuery.of(context).size.width,
+                                  color: Colors.white,
+                                  child: Padding(
+                                    padding: EdgeInsets.all(12),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          sneaker.name,
+                                          style: appstyle(
+                                            40,
+                                            Colors.black,
+                                            FontWeight.bold,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              sneaker.category,
+                                              style: appstyle(
+                                                17,
+                                                Colors.grey,
+                                                FontWeight.bold,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: 20,
+                                            ),
+                                            RatingBar.builder(
+                                              initialRating: 4,
+                                              minRating: 1,
+                                              allowHalfRating: true,
+                                              itemCount: 5,
+                                              itemSize: 22,
+                                              direction: Axis.horizontal,
+                                              itemPadding: EdgeInsets.symmetric(
+                                                  horizontal: 1),
+                                              itemBuilder: (context, _) => Icon(
+                                                Icons.star,
+                                                size: 18,
+                                                color: Colors.amber,
+                                              ),
+                                              onRatingUpdate: (rating) {},
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 12,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              '₦${sneaker.price}',
+                                              style: appstyle(18, Colors.black,
+                                                  FontWeight.normal),
+                                            ),
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  "Colors",
+                                                  style: appstyle(
+                                                      17,
+                                                      Colors.black,
+                                                      FontWeight.normal),
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                CircleAvatar(
+                                                  radius: 7,
+                                                  backgroundColor: Colors.black,
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                CircleAvatar(
+                                                  radius: 7,
+                                                  backgroundColor: Colors.red,
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Column(
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  "Select size",
+                                                  style: appstyle(
+                                                      17,
+                                                      Colors.black,
+                                                      FontWeight.normal),
+                                                ),
+                                                SizedBox(
+                                                  width: 20,
+                                                ),
+                                                Text(
+                                                  "View size guide",
+                                                  style: appstyle(
+                                                      17,
+                                                      Colors.black,
+                                                      FontWeight.normal),
+                                                ),
+                                              ],
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),

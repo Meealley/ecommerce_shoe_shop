@@ -95,29 +95,31 @@ class _ProductCardState extends State<ProductCard> {
               const SizedBox(
                 height: 20,
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 8, left: 8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      widget.price,
-                      style: appstyle(23, Colors.green, FontWeight.bold),
-                    ),
-                    Text(
-                      "Colors",
-                      style: appstyle(19, Colors.grey, FontWeight.w500),
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    ChoiceChip(
-                      label: const Text(" "),
-                      selected: selected,
-                      visualDensity: VisualDensity.compact,
-                      selectedColor: Colors.black,
-                    )
-                  ],
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 8, left: 8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        widget.price,
+                        style: appstyle(23, Colors.green, FontWeight.bold),
+                      ),
+                      Text(
+                        "Colors",
+                        style: appstyle(19, Colors.grey, FontWeight.w500),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      ChoiceChip(
+                        label: const Text(" "),
+                        selected: selected,
+                        visualDensity: VisualDensity.compact,
+                        selectedColor: Colors.black,
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],

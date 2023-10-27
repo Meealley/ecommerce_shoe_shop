@@ -53,7 +53,7 @@ class HomeWidget extends StatelessWidget {
                         id: shoe.id,
                         name: shoe.name,
                         category: shoe.category,
-                        price: '₦${shoe.oldPrice}',
+                        price: '₦${shoe.price}',
                         image: shoe.imageUrl[0],
                       ),
                     );
