@@ -71,6 +71,7 @@ class _ProductPageState extends State<ProductPage> {
                             GestureDetector(
                               onTap: () {
                                 Navigator.pop(context);
+                                productNotifier.shoeSizes.clear();
                               },
                               child: const Icon(Icons.close),
                             ),
@@ -290,16 +291,71 @@ class _ProductPageState extends State<ProductPage> {
                                             SizedBox(
                                               height: 40,
                                               child: ListView.builder(
-                                                  itemCount: 3,
+                                                  itemCount: productNotifier
+                                                      .shoeSizes.length,
                                                   scrollDirection:
                                                       Axis.horizontal,
                                                   padding: EdgeInsets.zero,
                                                   itemBuilder:
                                                       (context, index) {
-                                                    // return ChoiceChip(label: label, selected: selected)
+                                                    return Padding(
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 8),
+                                                      child: ChoiceChip(
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        60),
+                                                            side: BorderSide(
+                                                                color: Colors
+                                                                    .black,
+                                                                width: 1,
+                                                                style:
+                                                                    BorderStyle
+                                                                        .solid)),
+                                                        disabledColor:
+                                                            Colors.white,
+                                                        label: Text(
+                                                          productNotifier
+                                                                  .shoeSizes[
+                                                              index]['size'],
+                                                          style: appstyle(
+                                                              15,
+                                                              productNotifier.shoeSizes[
+                                                                          index]
+                                                                      [
+                                                                      'isSelected']
+                                                                  ? Colors.white
+                                                                  : Colors
+                                                                      .black,
+                                                              FontWeight.w500),
+                                                        ),
+                                                        selectedColor:
+                                                            Colors.black,
+                                                        selected: productNotifier
+                                                                    .shoeSizes[
+                                                                index]
+                                                            ['isSelected'],
+                                                        onSelected: (newState) {
+                                                          productNotifier
+                                                              .toggleCheck(
+                                                                  index);
+                                                        },
+                                                      ),
+                                                    );
                                                   }),
                                             ),
                                           ],
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Divider(
+                                          indent: 10,
+                                          endIndent: 10,
+                                          color: Colors.black,
                                         )
                                       ],
                                     ),
