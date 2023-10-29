@@ -286,7 +286,19 @@ class _ProductPageState extends State<ProductPage> {
                                                       FontWeight.normal),
                                                 ),
                                               ],
-                                            )
+                                            ),
+                                            SizedBox(
+                                              height: 40,
+                                              child: ListView.builder(
+                                                  itemCount: 3,
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  padding: EdgeInsets.zero,
+                                                  itemBuilder:
+                                                      (context, index) {
+                                                    // return ChoiceChip(label: label, selected: selected)
+                                                  }),
+                                            ),
                                           ],
                                         )
                                       ],

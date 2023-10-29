@@ -1,9 +1,11 @@
 import 'package:ecommerce_shop/model/sneakers_model.dart';
 import 'package:ecommerce_shop/pages/produxts/product_cart.dart';
 import 'package:ecommerce_shop/pages/produxts/product_page.dart';
+import 'package:ecommerce_shop/providers/product_provider.dart';
 import 'package:ecommerce_shop/theme/app_textstyle.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_shop/shared/product_card.dart';
+import 'package:provider/provider.dart';
 
 import 'newshoes.dart';
 
@@ -19,6 +21,8 @@ class HomeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var productNotifier = Provider.of<ProductNotifier>(context);
+
     return Column(
       children: [
         SizedBox(
@@ -27,9 +31,7 @@ class HomeWidget extends StatelessWidget {
             future: _male,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return const CircularProgressIndicator(
-                  color: Colors.black,
-                );
+                return const CircularProgressIndicator.adaptive();
               } else if (snapshot.hasError) {
                 return Text("Error: ${snapshot.error}");
               } else {
@@ -41,6 +43,8 @@ class HomeWidget extends StatelessWidget {
                     final shoe = snapshot.data![index];
                     return GestureDetector(
                       onTap: () {
+                        productNotifier.shoesSizes = shoe.sizes;
+                        print(productNotifier.shoeSizes);
                         Navigator.push(
                           context,
                           MaterialPageRoute(
