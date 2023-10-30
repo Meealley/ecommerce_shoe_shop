@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class ProductNotifier extends ChangeNotifier {
   int _activePage = 0;
   List<dynamic> _shoeSizes = [];
+  List<String> _sizes = [];
 
   int get activePage => _activePage;
 
@@ -25,6 +26,12 @@ class ProductNotifier extends ChangeNotifier {
       }
     }
 
+    notifyListeners();
+  }
+
+  List<String> get sizes => _sizes;
+  set sizes(List<String> newSizes) {
+    _sizes = newSizes;
     notifyListeners();
   }
 }

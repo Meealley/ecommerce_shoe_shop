@@ -5,10 +5,12 @@ import 'package:ecommerce_shop/theme/app_textstyle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:hive/hive.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 
 import '../../model/sneakers_model.dart';
+import '../../shared/checkout_button.dart';
 
 // import '../../model/sneakers_model.dart';
 
@@ -23,6 +25,7 @@ class ProductPage extends StatefulWidget {
 
 class _ProductPageState extends State<ProductPage> {
   final PageController pageController = PageController();
+  final _cartBox = Hive.box("cart_box");
   late Future<Sneakers> _sneaker;
 
   void getShoes() {
@@ -33,6 +36,10 @@ class _ProductPageState extends State<ProductPage> {
     } else {
       _sneaker = Helper().getKidsSneakersById(widget.id);
     }
+  }
+
+  Future<void> _createCart(Map<String, dynamic> newCart) async {
+    await _cartBox.add(newCart);
   }
 
   @override
@@ -298,6 +305,9 @@ class _ProductPageState extends State<ProductPage> {
                                                   padding: EdgeInsets.zero,
                                                   itemBuilder:
                                                       (context, index) {
+                                                    final sizes =
+                                                        productNotifier
+                                                            .shoeSizes[index];
                                                     return Padding(
                                                       padding:
                                                           EdgeInsets.symmetric(
@@ -339,6 +349,22 @@ class _ProductPageState extends State<ProductPage> {
                                                                 index]
                                                             ['isSelected'],
                                                         onSelected: (newState) {
+                                                          if (productNotifier
+                                                              .sizes
+                                                              .contains(sizes[
+                                                                  'size'])) {
+                                                            productNotifier
+                                                                .sizes
+                                                                .remove(sizes[
+                                                                    'size']);
+                                                          } else {
+                                                            productNotifier
+                                                                .sizes
+                                                                .add(sizes[
+                                                                    'size']);
+                                                          }
+                                                          print(productNotifier
+                                                              .sizes);
                                                           productNotifier
                                                               .toggleCheck(
                                                                   index);
@@ -388,32 +414,21 @@ class _ProductPageState extends State<ProductPage> {
                                           alignment: Alignment.bottomCenter,
                                           child: Padding(
                                             padding: EdgeInsets.only(top: 12),
-                                            child: GestureDetector(
-                                              onTap: () {},
-                                              child: Padding(
-                                                padding: EdgeInsets.all(8),
-                                                child: Container(
-                                                  decoration: BoxDecoration(
-                                                      color: Colors.black,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10)),
-                                                  height: 50,
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.9,
-                                                  child: Center(
-                                                    child: Text(
-                                                      "Add to cart",
-                                                      style: appstyle(
-                                                          20,
-                                                          Colors.white,
-                                                          FontWeight.bold),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
+                                            child: CheckOutButton(
+                                              label: "Add to cart",
+                                              onTap: () async {
+                                                _createCart({
+                                                  "id": sneaker.id,
+                                                  'name': sneaker.name,
+                                                  "category": sneaker.category,
+                                                  'imageUrl':
+                                                      sneaker.imageUrl[0],
+                                                  'price': sneaker.price,
+                                                  'qty': 1,
+                                                });
+                                                productNotifier.sizes.clear();
+                                                Navigator.pop(context);
+                                              },
                                             ),
                                           ),
                                         ),
