@@ -356,7 +356,67 @@ class _ProductPageState extends State<ProductPage> {
                                           indent: 10,
                                           endIndent: 10,
                                           color: Colors.black,
-                                        )
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.8,
+                                          child: Text(
+                                            sneaker.title,
+                                            style: appstyle(22, Colors.black,
+                                                FontWeight.w500),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Text(
+                                          sneaker.description,
+                                          style: appstyleWithHt(16, Colors.grey,
+                                              FontWeight.normal, 1.3),
+                                          textAlign: TextAlign.justify,
+                                          // maxLines: 5,
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Align(
+                                          alignment: Alignment.bottomCenter,
+                                          child: Padding(
+                                            padding: EdgeInsets.only(top: 12),
+                                            child: GestureDetector(
+                                              onTap: () {},
+                                              child: Padding(
+                                                padding: EdgeInsets.all(8),
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                      color: Colors.black,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10)),
+                                                  height: 50,
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.9,
+                                                  child: Center(
+                                                    child: Text(
+                                                      "Add to cart",
+                                                      style: appstyle(
+                                                          20,
+                                                          Colors.white,
+                                                          FontWeight.bold),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ),
