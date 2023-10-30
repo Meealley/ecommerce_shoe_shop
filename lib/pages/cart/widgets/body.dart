@@ -46,6 +46,9 @@ class Body extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
+            SizedBox(
+              height: 25,
+            ),
             Text(
               "My Cart",
               style: appstyle(32, Colors.black, FontWeight.bold),
@@ -122,7 +125,40 @@ class Body extends StatelessWidget {
                                               data['name'],
                                               style: appstyle(18, Colors.black,
                                                   FontWeight.bold),
-                                            )
+                                            ),
+                                            SizedBox(
+                                              height: 5,
+                                            ),
+                                            Text(
+                                              data['category'],
+                                              style: appstyle(
+                                                  15,
+                                                  Colors.grey.shade600,
+                                                  FontWeight.normal),
+                                            ),
+                                            SizedBox(
+                                              height: 5,
+                                            ),
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  data['price'],
+                                                  style: appstyle(
+                                                    15,
+                                                    Colors.grey.shade600,
+                                                    FontWeight.normal,
+                                                  ),
+                                                ),
+                                                // Text(
+                                                //   "${data['sizes']}",
+                                                //   style: appstyle(
+                                                //     15,
+                                                //     Colors.grey.shade600,
+                                                //      FontWeight.normal,
+                                                //   ),
+                                                // ),
+                                              ],
+                                            ),
                                           ],
                                         ),
                                       )

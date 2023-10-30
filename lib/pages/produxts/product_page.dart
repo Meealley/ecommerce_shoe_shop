@@ -405,7 +405,7 @@ class _ProductPageState extends State<ProductPage> {
                                           style: appstyleWithHt(16, Colors.grey,
                                               FontWeight.normal, 1.3),
                                           textAlign: TextAlign.justify,
-                                          // maxLines: 5,
+                                          maxLines: 5,
                                         ),
                                         SizedBox(
                                           height: 10,
@@ -421,6 +421,8 @@ class _ProductPageState extends State<ProductPage> {
                                                   "id": sneaker.id,
                                                   'name': sneaker.name,
                                                   "category": sneaker.category,
+                                                  'sizes':
+                                                      productNotifier.sizes,
                                                   'imageUrl':
                                                       sneaker.imageUrl[0],
                                                   'price': sneaker.price,
