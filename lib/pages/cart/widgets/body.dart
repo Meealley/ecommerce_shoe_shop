@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:hive/hive.dart';
 
 import '../../../theme/app_textstyle.dart';
@@ -31,22 +32,22 @@ class Body extends StatelessWidget {
     cart = cartData.reversed.toList();
 
     return Padding(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       child: Stack(children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             GestureDetector(
               onTap: () {},
-              child: Icon(
+              child: const Icon(
                 Icons.close,
                 color: Colors.black,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
             Text(
@@ -61,14 +62,14 @@ class Body extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final data = cart[index];
                     return Padding(
-                      padding: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.all(
+                        borderRadius: const BorderRadius.all(
                           Radius.circular(12),
                         ),
                         child: Slidable(
-                          key: ValueKey(0),
-                          endActionPane: ActionPane(
+                          key: const ValueKey(0),
+                          endActionPane: const ActionPane(
                             motion: ScrollMotion(),
                             children: [
                               SlidableAction(
@@ -90,7 +91,7 @@ class Body extends StatelessWidget {
                                   color: Colors.grey.shade100,
                                   spreadRadius: 5,
                                   blurRadius: 0.3,
-                                  offset: Offset(0, 1),
+                                  offset: const Offset(0, 1),
                                 )
                               ],
                             ),
@@ -101,7 +102,7 @@ class Body extends StatelessWidget {
                                   Row(
                                     children: [
                                       Padding(
-                                        padding: EdgeInsets.all(8),
+                                        padding: const EdgeInsets.all(8),
                                         child: CachedNetworkImage(
                                           imageUrl: data['imageUrl'],
                                           width: 70,
@@ -109,12 +110,12 @@ class Body extends StatelessWidget {
                                           fit: BoxFit.fill,
                                         ),
                                       ),
-                                      Padding(
+                                      const Padding(
                                         padding: EdgeInsets.all(18),
                                       ),
                                       Padding(
                                         padding:
-                                            EdgeInsets.only(top: 12, left: 20),
+                                            const EdgeInsets.only(top: 12, left: 20),
                                         child: Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
@@ -126,7 +127,7 @@ class Body extends StatelessWidget {
                                               style: appstyle(18, Colors.black,
                                                   FontWeight.bold),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 5,
                                             ),
                                             Text(
@@ -136,7 +137,7 @@ class Body extends StatelessWidget {
                                                   Colors.grey.shade600,
                                                   FontWeight.normal),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 5,
                                             ),
                                             Row(
@@ -149,6 +150,7 @@ class Body extends StatelessWidget {
                                                     FontWeight.normal,
                                                   ),
                                                 ),
+
                                                 // Text(
                                                 //   "${data['sizes']}",
                                                 //   style: appstyle(
@@ -162,6 +164,52 @@ class Body extends StatelessWidget {
                                           ],
                                         ),
                                       )
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8),
+                                        child: Container(
+                                          decoration: const BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(16),
+                                            ),
+                                          ),
+                                          child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                InkWell(
+                                                  onTap: () {},
+                                                  //cartprovider increment
+                                                  child: const Icon(
+                                                    AntDesign.minussquare,
+                                                    size: 20,
+                                                    color: Colors.grey,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  data['qty'].toString(),
+                                                  style: appstyle(
+                                                      12,
+                                                      Colors.black,
+                                                      FontWeight.w400),
+                                                ),
+                                                InkWell(
+                                                  onTap: () {},
+                                                  //cartprovider increment
+                                                  child: const Icon(
+                                                    AntDesign.plussquare,
+                                                    size: 20,
+                                                    color: Colors.grey,
+                                                  ),
+                                                ),
+                                              ]),
+                                        ),
+                                      ),
                                     ],
                                   )
                                 ]),

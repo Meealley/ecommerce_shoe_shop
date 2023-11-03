@@ -17,7 +17,7 @@ class CheckOutButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child: Container(
           decoration: BoxDecoration(
               color: Colors.black, borderRadius: BorderRadius.circular(10)),

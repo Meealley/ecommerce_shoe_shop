@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../theme/app_textstyle.dart';
 import 'widgets/body.dart';
 
 class CartPage extends StatelessWidget {

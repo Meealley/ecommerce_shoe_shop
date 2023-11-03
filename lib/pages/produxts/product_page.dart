@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:hive/hive.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 
 import '../../model/sneakers_model.dart';
@@ -84,7 +83,7 @@ class _ProductPageState extends State<ProductPage> {
                             ),
                             GestureDetector(
                               onTap: null,
-                              child: Icon(
+                              child: const Icon(
                                 AntDesign.ellipsis1,
                                 size: 45,
                                 weight: 50,
@@ -173,7 +172,7 @@ class _ProductPageState extends State<ProductPage> {
                             Positioned(
                               bottom: 30,
                               child: ClipRRect(
-                                borderRadius: BorderRadius.only(
+                                borderRadius: const BorderRadius.only(
                                   topLeft: Radius.circular(30),
                                   topRight: Radius.circular(30),
                                 ),
@@ -183,7 +182,7 @@ class _ProductPageState extends State<ProductPage> {
                                   width: MediaQuery.of(context).size.width,
                                   color: Colors.white,
                                   child: Padding(
-                                    padding: EdgeInsets.all(12),
+                                    padding: const EdgeInsets.all(12),
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -196,7 +195,7 @@ class _ProductPageState extends State<ProductPage> {
                                             FontWeight.bold,
                                           ),
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 10,
                                         ),
                                         Row(
@@ -209,7 +208,7 @@ class _ProductPageState extends State<ProductPage> {
                                                 FontWeight.bold,
                                               ),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               width: 20,
                                             ),
                                             RatingBar.builder(
@@ -219,9 +218,9 @@ class _ProductPageState extends State<ProductPage> {
                                               itemCount: 5,
                                               itemSize: 22,
                                               direction: Axis.horizontal,
-                                              itemPadding: EdgeInsets.symmetric(
+                                              itemPadding: const EdgeInsets.symmetric(
                                                   horizontal: 1),
-                                              itemBuilder: (context, _) => Icon(
+                                              itemBuilder: (context, _) => const Icon(
                                                 Icons.star,
                                                 size: 18,
                                                 color: Colors.amber,
@@ -230,7 +229,7 @@ class _ProductPageState extends State<ProductPage> {
                                             ),
                                           ],
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 12,
                                         ),
                                         Row(
@@ -251,17 +250,17 @@ class _ProductPageState extends State<ProductPage> {
                                                       Colors.black,
                                                       FontWeight.normal),
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   width: 5,
                                                 ),
-                                                CircleAvatar(
+                                                const CircleAvatar(
                                                   radius: 7,
                                                   backgroundColor: Colors.black,
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   width: 5,
                                                 ),
-                                                CircleAvatar(
+                                                const CircleAvatar(
                                                   radius: 7,
                                                   backgroundColor: Colors.red,
                                                 ),
@@ -269,7 +268,7 @@ class _ProductPageState extends State<ProductPage> {
                                             ),
                                           ],
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 20,
                                         ),
                                         Column(
@@ -283,7 +282,7 @@ class _ProductPageState extends State<ProductPage> {
                                                       Colors.black,
                                                       FontWeight.normal),
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   width: 20,
                                                 ),
                                                 Text(
@@ -310,7 +309,7 @@ class _ProductPageState extends State<ProductPage> {
                                                             .shoeSizes[index];
                                                     return Padding(
                                                       padding:
-                                                          EdgeInsets.symmetric(
+                                                          const EdgeInsets.symmetric(
                                                               horizontal: 8),
                                                       child: ChoiceChip(
                                                         shape: RoundedRectangleBorder(
@@ -318,7 +317,7 @@ class _ProductPageState extends State<ProductPage> {
                                                                 BorderRadius
                                                                     .circular(
                                                                         60),
-                                                            side: BorderSide(
+                                                            side: const BorderSide(
                                                                 color: Colors
                                                                     .black,
                                                                 width: 1,
@@ -375,15 +374,15 @@ class _ProductPageState extends State<ProductPage> {
                                             ),
                                           ],
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 10,
                                         ),
-                                        Divider(
+                                        const Divider(
                                           indent: 10,
                                           endIndent: 10,
                                           color: Colors.black,
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 10,
                                         ),
                                         SizedBox(
@@ -397,7 +396,7 @@ class _ProductPageState extends State<ProductPage> {
                                                 FontWeight.w500),
                                           ),
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 10,
                                         ),
                                         Text(
@@ -407,13 +406,13 @@ class _ProductPageState extends State<ProductPage> {
                                           textAlign: TextAlign.justify,
                                           maxLines: 5,
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 10,
                                         ),
                                         Align(
                                           alignment: Alignment.bottomCenter,
                                           child: Padding(
-                                            padding: EdgeInsets.only(top: 12),
+                                            padding: const EdgeInsets.only(top: 12),
                                             child: CheckOutButton(
                                               label: "Add to cart",
                                               onTap: () async {

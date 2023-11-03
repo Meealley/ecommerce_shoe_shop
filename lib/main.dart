@@ -6,7 +6,6 @@ import 'package:ecommerce_shop/pages/home/home_screen.dart';
 import 'package:ecommerce_shop/providers/home_screen_provider.dart';
 import 'package:ecommerce_shop/providers/product_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
