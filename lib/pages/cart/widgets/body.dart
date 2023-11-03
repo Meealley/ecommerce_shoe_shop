@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerce_shop/shared/checkout_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
@@ -114,8 +115,8 @@ class Body extends StatelessWidget {
                                         padding: EdgeInsets.all(18),
                                       ),
                                       Padding(
-                                        padding:
-                                            const EdgeInsets.only(top: 12, left: 20),
+                                        padding: const EdgeInsets.only(
+                                            top: 12, left: 20),
                                         child: Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
@@ -220,7 +221,11 @@ class Body extends StatelessWidget {
                   }),
             )
           ],
-        )
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: CheckOutButton(label: "Proceed to check out"),
+        ),
       ]),
     );
   }
